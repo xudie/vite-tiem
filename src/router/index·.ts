@@ -4,8 +4,12 @@ const routes = [
   {
     path: '/',
     component: () => import('../components/HelloWorld.vue')
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgotPassword',
+    component: () => import('@/views/login/forgotPassword.vue')
   }
-  // 你可以继续添加其他路由
 ]
 
 const router = createRouter({

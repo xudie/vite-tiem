@@ -1,5 +1,15 @@
+// 配置 @ 路径别名 npm install --save-dev @types/node
+/// <reference types="node" />
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+// 配置 @ 路径别名
+import { fileURLToPath } from 'url'
+import { dirname, resolve } from 'path'
+
+// 配置 @ 路径别名
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -23,5 +33,11 @@ export default defineConfig({
   },
   // 让 Vite 使用 Vue 插件来支持 .vue 文件的编译和热更新
   // Vite 默认是一个通用构建工具，它本身不直接支持 Vue。通过 vue() 插件
-  plugins: [vue()] // 启用 Vue 支持 如有其他插件，vue()必须放在前面
+  plugins: [vue()], // 启用 Vue 支持 如有其他插件，vue()必须放在前面
+  // 配置 @ 路径别名
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  }
 })
